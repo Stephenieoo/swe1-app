@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello, Django on AWS Elastic Beanstalk!")
 
 urlpatterns = [
     path('polls/', include('polls.urls')),
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('', home)  # Add this line
 ]
