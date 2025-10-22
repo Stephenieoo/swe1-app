@@ -1,3 +1,45 @@
-.DS_Store
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
 *.pyc
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+mysite/db.sqlite3
+/media
+/static
+
+# EB
+.elasticbeanstalk/
+!mysite/.elasticbeanstalk/
+!mysite/.elasticbeanstalk/*.cfg.yml
+!mysite/.elasticbeanstalk/*.global.yml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+.coverage
+htmlcov/
+.coverage.*
+
+# Testing
+.pytest_cache/
