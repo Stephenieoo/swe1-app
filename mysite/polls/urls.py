@@ -17,10 +17,10 @@ from . import views
 # ]
 
 # the name of the matched pattern in the path strings of the second and third patterns has changed from <question_id> to <pk>
-app_name = 'polls'
+app_name = "polls"
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
-    path('<int:pk>/results/', views.ResultsView.as_view(), name='results'),
-    path('<int:question_id>/vote/', views.vote, name='vote'),
+    path("", views.IndexView.as_view(), name="index"),
+    path("<int:pk>/", views.DetailView.as_view(), name="detail"),
+    path("<int:pk>/results/", views.ResultsView.as_view(), name="results"),
+    path("<int:question_id>/vote/", views.vote, name="vote"),
 ]
