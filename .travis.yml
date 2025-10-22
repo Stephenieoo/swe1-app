@@ -1,0 +1,42 @@
+language: python
+python:
+  - "3.11"
+
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE=mysite.settings
+
+# 切换到Django项目目录
+before_install:
+  - cd mysite
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+  - python manage.py migrate
+
+script:
+  # 代码格式检查
+  - black --check .
+  
+  # 代码规范检查
+  - flake8 .
+  
+  # 运行测试并生成覆盖率报告
+  - coverage run --source='.' manage.py test
+  - coverage report
+
+after_success:
+  - coveralls
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: "us-east-1"
+  app: "mysite"
+  env: "mysite-env"
+  bucket_name: "elasticbeanstalk-us-east-1-676206931048"
+  on:
+    branch: main
