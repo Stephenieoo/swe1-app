@@ -13,15 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+
+
+def health_check(request):
+    """Health Check Endpoint"""
+    return JsonResponse({'status': 'healthy'})
 
 def home(request):
     return HttpResponse("Hello, Django on AWS Elastic Beanstalk!")
 
+
 urlpatterns = [
-    path('polls/', include('polls.urls')),
-    path('admin/', admin.site.urls),
-    path('', home)  # Add this line
+    path("polls/", include("polls.urls")),
+    path("admin/", admin.site.urls),
+    path('health/', health_check, name='health_check'),
+    path("", home),  # Add this line
 ]
