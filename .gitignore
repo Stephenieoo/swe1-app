@@ -43,3 +43,6 @@ htmlcov/
 
 # Testing
 .pytest_cache/
+
+# Elastic Beanstalk app versions
+mysite/.elasticbeanstalk/app_versions/
