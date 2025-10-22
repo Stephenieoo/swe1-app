@@ -1,5 +1,15 @@
+# Django 核心
 asgiref==3.10.0
-Django==5.2
+Django==5.2.7
+
+sqlparse==0.5.3
+
+# 生产服务器
 gunicorn==23.0.0
 packaging==25.0
-sqlparse==0.5.3
+
+# CI/CD 工具
+black==24.10.0
+flake8==7.1.1
+coverage==7.6.1
+coveralls==4.0.1
