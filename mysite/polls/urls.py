@@ -16,7 +16,6 @@ from . import views
 #     path('<int:question_id>/vote/', views.vote, name='vote'),
 # ]
 
-# the name of the matched pattern in the path strings of the second and third patterns has changed from <question_id> to <pk>
 app_name = "polls"
 urlpatterns = [
     path("", views.IndexView.as_view(), name="index"),
