@@ -21,7 +21,8 @@ from django.http import HttpResponse, JsonResponse
 
 def health_check(request):
     """Health Check Endpoint"""
-    return JsonResponse({'status': 'healthy'})
+    return JsonResponse({"status": "healthy"})
+
 
 def home(request):
     return HttpResponse("Hello, Django on AWS Elastic Beanstalk!")
@@ -30,6 +31,6 @@ def home(request):
 urlpatterns = [
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
-    path('health/', health_check, name='health_check'),
+    path("health/", health_check, name="health_check"),
     path("", home),  # Add this line
 ]
