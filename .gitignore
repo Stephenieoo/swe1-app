@@ -46,3 +46,8 @@ htmlcov/
 
 # Elastic Beanstalk app versions
 mysite/.elasticbeanstalk/app_versions/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
