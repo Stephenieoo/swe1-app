@@ -30,6 +30,10 @@ script:
 after_success:
   - coveralls
 
+before_deploy:
+  - zip -r ../deploy.zip . -x "*.git*" "*__pycache__*" "*.pyc" "*.sqlite3"
+  - cd ..
+
 deploy:
   provider: elasticbeanstalk
   access_key_id: $AWS_ACCESS_KEY_ID
@@ -38,5 +42,7 @@ deploy:
   app: "mysite"
   env: "mysite-env"
   bucket_name: "elasticbeanstalk-us-east-1-676206931048"
+  skip_cleanup: true
+  zip_file: deploy.zip  # 使用打包好的 zip
   on:
     branch: main
