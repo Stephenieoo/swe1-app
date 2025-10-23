@@ -29,6 +29,8 @@ script:
   - coverage report
 
 after_success:
+  - cp .coverage ../  # 把文件复制回上级目录
+  - cd ..
   - coveralls
 
 before_deploy:
