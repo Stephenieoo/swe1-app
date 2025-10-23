@@ -27,11 +27,12 @@ script:
   # 运行测试并生成覆盖率报告
   - coverage run --source='.' manage.py test
   - coverage report
+  - coverage xml
 
 after_success:
   - cp .coverage ../  # 把文件复制回上级目录
   - cd ..
-  - coveralls
+  - coveralls --basedir mysite || echo "⚠️ Coveralls upload failed, continuing..."
 
 before_deploy:
   - zip -r ../deploy.zip . -x "*.git*" "*__pycache__*" "*.pyc" "*.sqlite3"
